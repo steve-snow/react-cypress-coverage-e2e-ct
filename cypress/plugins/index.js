@@ -17,6 +17,12 @@
  */
 // eslint-disable-next-line no-unused-vars
 module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
+
+  if (config.testingType === 'component') {
+    // config.supportFile = 'src/cypress/unit-test-support/index.js'
+    config.fixturesFolder = false
+
+    require('@cypress/react/plugins/react-scripts')(on, config)
+  }
+
 }

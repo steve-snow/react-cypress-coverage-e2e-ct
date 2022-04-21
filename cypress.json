@@ -1,1 +1,10 @@
-{}
+{
+    "baseUrl": "https://localhost:3000",
+    "specFiles": "*spec.*",
+    "testFiles": "**/tests/**/*spec.js",
+    "componentFolder": "src",
+    "component": {
+        "componentFolder": "src",
+        "testFiles": "**/*.spec.{js,jsx,ts,tsx}"
+    }
+}

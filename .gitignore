@@ -9,6 +9,7 @@
 /coverage
 cypress/videos
 cypress/snapshots
+/instrumented
 
 # coverage
 # .nyc_output

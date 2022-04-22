@@ -9,6 +9,7 @@
 /coverage
 cypress/videos
 cypress/snapshots
+/instrumented
 
 # production
 /build

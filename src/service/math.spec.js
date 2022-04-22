@@ -1,3 +1,5 @@
+/* eslint-disable jest/valid-expect */
+/* eslint-disable no-undef */
 /// <reference types="cypress" />
 import * as math from './math'
 

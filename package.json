@@ -17,7 +17,11 @@
     "cy:open": "cypress open",
     "cy:openct": "cypress open-ct",
     "cy:run": "cypress run",
-    "cy:runct": "cypress run-ct"
+    "cy:runct": "cypress run-ct",
+    "clean": "rm -rf build .nyc_output || true",
+    "preinstrument": "yarn run clean",
+    "instrument": "nyc instrument ./src ./instrumented/src --exclude [\"cypress/**\"] --compact false",
+    "report": "nyc report"
   },
   "eslintConfig": {
     "extends": [

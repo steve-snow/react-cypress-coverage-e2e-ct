@@ -15,6 +15,8 @@
 /**
  * @type {Cypress.PluginConfig}
  */
+ const browserify = require('@cypress/browserify-preprocessor')
+
 // eslint-disable-next-line no-unused-vars
 module.exports = (on, config) => {
 
@@ -24,5 +26,11 @@ module.exports = (on, config) => {
 
     require('@cypress/react/plugins/react-scripts')(on, config)
   }
+  require('@cypress/code-coverage/task')(on, config)
 
+  const options = browserify.defaultOptions
+  options.browserifyOptions.transform[1][1].babelrc = true
+  on('file:preprocessor', browserify(options))
+
+  return config;
 }

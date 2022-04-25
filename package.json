@@ -17,7 +17,9 @@
     "cy:open": "cypress open",
     "cy:openct": "cypress open-ct",
     "cy:run": "cypress run",
-    "cy:runct": "cypress run-ct"
+    "cy:runct": "cypress run-ct",
+    "cy:inst": "",
+    "cy:report": "nyc report --reporter=text-lcov"
   },
   "eslintConfig": {
     "extends": [
@@ -41,9 +43,16 @@
     "@babel/core": "^7.17.9",
     "@cypress/browserify-preprocessor": "^3.0.2",
     "@cypress/react": "^5.12.4",
+    "@cypress/webpack-dev-server": "^1.8.4",
     "babel-plugin-istanbul": "^6.1.1",
     "cypress": "^9.5.4",
     "cypress-istanbul": "^1.3.0",
     "istanbul-lib-coverage": "^3.2.0"
+  },
+  "nyc": {
+    "all": true,
+    "include": [
+      "src/**"
+    ]
   }
 }

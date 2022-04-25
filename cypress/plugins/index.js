@@ -18,13 +18,20 @@
  const browserify = require('@cypress/browserify-preprocessor')
 
  module.exports = (on, config) => {
-   on('task', require('cypress-istanbul/task'))
-   on('file:preprocessor', require('cypress-istanbul/use-babelrc'))
- 
-   // tell Cypress to use .babelrc when bundling spec code
-   const options = browserify.defaultOptions
-   options.browserifyOptions.transform[1][1].babelrc = true
-   on('file:preprocessor', browserify(options))
+  
+  if (config.testingType === 'component') {
+    config.fixturesFolder = false
 
-   return config;
+    require('@cypress/react/plugins/react-scripts')(on, config)
+  }
+
+  on('task', require('cypress-istanbul/task'))
+  on('file:preprocessor', require('cypress-istanbul/use-babelrc')) // solved issue with not finding module babel-plugin-transform-class-properties
+ 
+  // tell Cypress to use .babelrc when bundling spec code
+  const options = browserify.defaultOptions
+  options.browserifyOptions.transform[1][1].babelrc = true
+  on('file:preprocessor', browserify(options))
+
+   return config; // missing? from battery demo
  }

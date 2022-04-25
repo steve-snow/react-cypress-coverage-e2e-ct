@@ -18,11 +18,18 @@
 // eslint-disable-next-line no-unused-vars
 module.exports = (on, config) => {
 
-  if (config.testingType === 'component') {
-    // config.supportFile = 'src/cypress/unit-test-support/index.js'
-    config.fixturesFolder = false
+  // if (config.testingType === 'component') {
+  //   // config.supportFile = 'src/cypress/unit-test-support/index.js'
+  //   config.fixturesFolder = false
 
-    require('@cypress/react/plugins/react-scripts')(on, config)
-  }
-
+  //   require('@cypress/react/plugins/react-scripts')(on, config)
+  // }
+  require('@cypress/code-coverage/task')(on, config)
+  // on('file:preprocessor', require('@cypress/code-coverage/use-babelrc'))
+  on(
+    'file:preprocessor',
+    require('@cypress/code-coverage/use-browserify-istanbul')
+  )
+  
+  return config;
 }
